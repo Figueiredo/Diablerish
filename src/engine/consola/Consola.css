@@ -1,0 +1,17 @@
+.cssConsola
+{
+    background-color:black;
+    border-width: 0px;
+    border-spacing: 0px;
+    padding: 0px;
+    border-collapse: collapse;
+    margin:0px;
+    line-height: 80%;
+}
+
+.cssConsola td
+{
+    font-family: courier,fixed,swiss,monospace,sans-serif;
+    font-size: 14px;
+    padding: 0px;
+}
