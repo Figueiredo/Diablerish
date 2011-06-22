@@ -2,11 +2,11 @@ function Diablerish()
 {
         this.acabaJogo=function(__jog)
         {
-        	that.estado=0;
-        	player.cor = Cores.vermelho_escuro;
-        	player.char = '%';
-        	Log.log('Morreste...');        	
-        }	
+            that.estado=0;
+            player.cor = Cores.vermelho_escuro;
+            player.char = '%';
+            Log.log('Morreste...',Cores.vermelho);
+        };
 		
 		var that=this;
         /**
@@ -22,26 +22,28 @@ function Diablerish()
          */
         var mapa=new Mapa(80,20,player);
         mapa.geradorTipo1(10,6,30);
-                
+
+        Log.log('Benvindo ao mundo do Diablerish',Cores.laranja_escuro);
         /**
          * DESENHAR
          */
         var desenha=function()
         {              
-        	//actualiza jogo
+            //actualiza jogo
             mapa.update();
             //desenha mapa
             mapa.draw(buffer);      
             //desenha GUI   
             con.setCorTexto(Cores.vermelho);
-            con.escreveTexto(1,23,"HP:"+player.combate.hp+"/"+player.combate.max_hp)
-            if(player.combate.hp<0) alert(layer.combate.hp);
+            con.escreveTexto(1,23,"HP:"+player.combate.hp+"/"+player.combate.max_hp);            
+            //actualiza o log
+            Log.escreveBuffer();            
             //faz blit do buffer para o ecran   
-            con.blit(buffer,0,0,80,20,0,2);
+            con.blit(buffer,0,0,80,20,0,0);
+            con.blit(Log.painel,0,0,70,5,10,20);
             //actualiza o ecran
             con.escreveBuffer();
-            //actualiza o log
-            Log.escreveBuffer();
+
         };       
         desenha();
         
@@ -51,8 +53,8 @@ function Diablerish()
          */
         document.onkeydown=function(evt)        
         {
-        	if(that.estado==1)
-        	{
+            if(that.estado==1)
+            {
 	            switch(evt.keyCode)
 	            {
 	                case 37: //esquerda
@@ -78,7 +80,7 @@ function Diablerish()
             }
             else
             {
-            	return false;
+                return false;
             }        
         };       
 }

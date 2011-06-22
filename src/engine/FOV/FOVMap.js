@@ -36,7 +36,7 @@ FOVMap.prototype.isVisible=function(__x,__y)
 {
     if(__x>=0&&__x<this.MAP_WIDTH&&__y>=0&&__y<this.MAP_HEIGHT)
     {
-    	return this.t[__x][__y].visivel;
+        return this.t[__x][__y].visivel;
 	}
     return false;	    
 };

@@ -57,3 +57,19 @@ vConsola.prototype.setCorTexto=function(__cor)
     this.corTexto=__cor;
 };
 
+/**
+ * Função para limpar o ecrã
+ */
+vConsola.prototype.limpaEcran=function()
+{
+    for(i=0;i<this.HEIGHT;i++)
+    {
+        for(var j=0;j<this.WIDTH;j++)
+        {
+            this.buffer[i][j]="&nbsp;";
+            this.bufferCores[i][j].texto=Cores.defaultTexto;
+            this.bufferCores[i][j].fundo=Cores.defaultFundo;
+        }
+    }    
+	
+};

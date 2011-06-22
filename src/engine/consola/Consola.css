@@ -1,11 +1,12 @@
 .cssConsola
 {
     background-color:black;
-    border-width: 0px;
-    border-spacing: 0px;
-    padding: 0px;
+    color: #D2D2D2;
+    border-width: 0;
+    border-spacing: 0;
+    padding: 0;
     border-collapse: collapse;
-    margin:0px;
+    margin:0;
     line-height: 80%;
 }
 
@@ -13,5 +14,5 @@
 {
     font-family: courier,fixed,swiss,monospace,sans-serif;
     font-size: 14px;
-    padding: 0px;
+    padding: 0;
 }

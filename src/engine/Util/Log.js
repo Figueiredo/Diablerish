@@ -6,25 +6,30 @@ function errorlog(msg) {
 
 function logger()
 {
-    this.alvo = document.getElementById("log");
+    this.MAX_LINHAS=5;
     this.lista = [];
-    
+    this.painel = new vConsola(70,this.MAX_LINHAS);    
 }
 
-logger.prototype.log=function(_msg)
+logger.prototype.log=function(_msg,_cor)
 {
-    this.lista.unshift(_msg);
-    if(this.lista.length>5)
+    if(_cor===undefined)
+        _cor = Cores.defaultTexto;
+    this.lista.unshift({msg:_msg,cor:_cor});
+    while(this.lista.length>this.MAX_LINHAS)
+    {
         this.lista.pop();
+    }
 };
 
 logger.prototype.escreveBuffer=function()
 {
-	//if(this.alvo==undefined) this.alvo = document.getElementById("log");
-    this.alvo.innerHTML="";
-    
-    for(var i=0;i<this.lista.length;i++)
-        this.alvo.innerHTML+=this.lista[i]+"<br/>";
+    this.painel.limpaEcran();
+    for(var y=0;y<this.lista.length;y++)
+    {
+        this.painel.setCorTexto(this.lista[y].cor);
+        this.painel.escreveTexto(0,y,this.lista[y].msg);
+    }
 };
 
 var Log = new logger();

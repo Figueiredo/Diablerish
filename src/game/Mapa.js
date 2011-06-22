@@ -171,11 +171,11 @@ Mapa.prototype.baixaPrioridade=function(__obj)
     {
         if(this.objs[i]==__obj)
         {     
-        	this.objs.splice(i,1);
-        	this.objs.unshift(__obj);   	
+            this.objs.splice(i,1);
+            this.objs.unshift(__obj);
             return;
         }                            
-    }     		
+    }	
 };
 
 /**
