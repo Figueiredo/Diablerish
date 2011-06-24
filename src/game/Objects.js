@@ -9,6 +9,7 @@ function Obj(__data)
     this.bloqueia = __data.bloqueia!==undefined?__data.bloqueia:false;
     this.combate = __data.combate;
     this.ia = __data.ia;
+    this.item = __data.item;
     if(this.combate!==undefined) this.combate.dono=this;
     if(this.ia!==undefined) this.ia.dono=this;
 }

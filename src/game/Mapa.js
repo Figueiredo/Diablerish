@@ -9,6 +9,7 @@ function Mapa(__w,__h,__player)
     this.MAP_WIDTH=__w;
     this.MAP_HEIGHT=__h;
     this.MAX_ROOM_MONSTERS=3;
+    this.MAX_ROOM_ITEMS=2;
     this.t=[];
     this.startX=0;
     this.startY=0;
@@ -184,11 +185,12 @@ Mapa.prototype.baixaPrioridade=function(__obj)
 Mapa.prototype.colocaObjs=function(__room)
 {
     var num_monsters = Random.genInt(0,this.MAX_ROOM_MONSTERS);
+    var num_items = Random.genInt(0,this.MAX_ROOM_ITEMS);
     
     for(var i=0;i<num_monsters;i++)
     {
-        var x = Random.genInt(__room.x1,__room.x2);
-        var y = Random.genInt(__room.y1,__room.y2);
+        var x = Random.genInt(__room.x1+1,__room.x2-1);
+        var y = Random.genInt(__room.y1+1,__room.y2-1);
         
         if(!this.bloqueado(x,y))
         {
@@ -204,12 +206,39 @@ Mapa.prototype.colocaObjs=function(__room)
             this.objs.push(monstro);
         }
     }
+    
+    for(i=0;i<num_items;i++)
+    {
+        var x = Random.genInt(__room.x1+1,__room.x2-1);
+        var y = Random.genInt(__room.y1+1,__room.y2-1);
+        
+        if(!this.bloqueado(x,y))
+        {
+            var item = new Obj({x:x,y:y,char:'!',nome:"Poção curativa",cor:Cores.violeta});
+            this.objs.unshift(item);
+        }
+    }
 };
 
 /**
  * Função para escavar salas
  */
 Mapa.prototype.createRoom=function(__room)
+{
+    for(var x=__room.x1+1;x<__room.x2;x++)
+    {
+        for(var y=__room.y1+1;y<__room.y2;y++)
+        {            
+            this.t[x][y].mudaTipo(Tiles.Chao);
+            this.fov.setBloqueio(x,y,false);
+        }        
+    }
+};
+
+/**
+ * Função para escavar salas sem paredes (permite salas contiguas)
+ */
+Mapa.prototype.createRoom2=function(__room)
 {
     for(var x=__room.x1;x<=__room.x2;x++)
     {
@@ -263,8 +292,8 @@ Mapa.prototype.geradorTipo1=function(__maxT,__minT,__numR)
         var w = Random.genInt(ROOM_MIN_SIZE,ROOM_MAX_SIZE);
         var h = Random.genInt(ROOM_MIN_SIZE,ROOM_MAX_SIZE);
         //posição aleatória sem sair do mapa
-        var x = Random.genInt(1,this.MAP_WIDTH-w-1);
-        var y = Random.genInt(1,this.MAP_HEIGHT-h-1);
+        var x = Random.genInt(0,this.MAP_WIDTH-w-1);
+        var y = Random.genInt(0,this.MAP_HEIGHT-h-1);
         //cria a sala
         var nova_sala=new Rect(x,y,w,h);
         //verifica se intercepta com outra sala
