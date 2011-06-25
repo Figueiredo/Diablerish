@@ -3,10 +3,37 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Diablerish R008</title>
-    <script type="text/javascript" src="src/Loader.js"></script>
-    <script type="text/javascript" src="src/game.js"></script>    
-</head> 
-<body onload="new Diablerish();">
+    <link rel="stylesheet" href="src/engine/consola/Consola.css">
+    <script type="text/javascript" src="src/mootools-core-1.3.2-full-nocompat-yc.js"></script>
+    <script type="text/javascript" src="src/engine/consola/Cores.js"></script>
+    <script type="text/javascript" src="src/engine/consola/CorCelula.js"></script>
+    <script type="text/javascript" src="src/engine/consola/cConsola.js"></script>
+    <script type="text/javascript" src="src/engine/consola/cConsolaEcran.js"></script>
+    <script type="text/javascript" src="src/engine/Util/Rectangle.js"></script>
+    <script type="text/javascript" src="src/engine/Util/Random.js"></script>
+    <script type="text/javascript" src="src/engine/Util/Log.js"></script>
+    <script type="text/javascript" src="src/engine/Util/Misc.js"></script>
+    <script type="text/javascript" src="src/engine/FOV/FOVA.js"></script>
+    <script type="text/javascript" src="src/engine/FOV/FOVA_basico.js"></script>
+    <script type="text/javascript" src="src/engine/FOV/FOVA_raycasting.js"></script>
+    <script type="text/javascript" src="src/engine/FOV/FOVA_rs.js"></script>
+    <script type="text/javascript" src="src/engine/FOV/FOVMap.js"></script>
+    <script type="text/javascript" src="src/game/Objects.js"></script>
+    <script type="text/javascript" src="src/game/comportamentos/Combate.js"></script>
+    <script type="text/javascript" src="src/game/comportamentos/IA.js"></script>
+    <script type="text/javascript" src="src/game/comportamentos/Mortes.js"></script>
+    <script type="text/javascript" src="src/game/Actors/Orc.js"></script>
+    <script type="text/javascript" src="src/game/Actors/Troll.js"></script>
+    <script type="text/javascript" src="src/game/Items/PocaoVida.js"></script>
+    <script type="text/javascript" src="src/game/Tile.js"></script>
+    <script type="text/javascript" src="src/game/Mapa/Mapa.js"></script>
+    <script type="text/javascript" src="src/game/Mapa/GMTipo0.js"></script>
+    <script type="text/javascript" src="src/game/Mapa/GMTipo1.js"></script>
+    <script type="text/javascript" src="src/game/Mapa/GMTipo2.js"></script>
+    <script type="text/javascript" src="src/game/Mapa/GeradorMapas.js"></script>
+    <script type="text/javascript" src="src/Diablerish.js"></script>      
+</head>
+<body onload="var game=new Diablerish();">
 <div id="alvo">
 </div>
 </body>
